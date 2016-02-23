@@ -1,4 +1,8 @@
 name: RedstoneBuilder
-main:me.FinnT730.redstone.RedstoneBuilder
+main: me.FinnT730.redstone.RedstoneBuilder
 version: 1.0
-description: This will help you to make an redstone build!
+description: RedstoneBuilder
+commands:
+  loop:
+    usage: /loopSmall
+    description: This can make an circuit for you, but its is an small one....
