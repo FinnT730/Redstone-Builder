@@ -1,30 +1,27 @@
 package me.FinnT730.redstone;
 
+import java.util.logging.Logger;
+
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.FinnT730.redstone.BlockHandler.MainBlockGet;
-import me.FinnT730.redstone.loops.RedstoneLoopSmall;
-import net.minecraft.server.v1_8_R3.Blocks;
-import net.minecraft.server.v1_8_R3.Item;
+import me.FinnT730.redstone.loop.RedstoneLoopSmall;
 
-public class RedstoneBuilder extends JavaPlugin {
+public class RedstoneBuilder extends JavaPlugin implements Listener {
 	
 	
-	static MainBlockGet BlockList = new MainBlockGet();
-	
-	@Override
 	public void onEnable() {
 		
+		/*Command section
+		*/	
 		this.getCommand("loop").setExecutor(new RedstoneLoopSmall());
+		//End Command Section
 		
-		try {
-			BlockList.add(Item.REGISTRY.toString());
-		} catch (Exception e) {
-			e.equals(Blocks.REDSTONE_WIRE.I);
-		}
-		
-		
-		
+		getServer().getPluginManager().registerEvents(this, this);		
+		PluginDescriptionFile pdfFile = getDescription();
+		Logger logger = Logger.getLogger("Minecraft");
+		logger.info(pdfFile.getName() + "has been enabled " + pdfFile.getVersion());		
 	}
 	
 	@Override
