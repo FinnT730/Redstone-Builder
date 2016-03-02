@@ -2,7 +2,16 @@ package me.FinnT730.redstone;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
 import java.util.Random;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.bukkit.Material;
@@ -62,14 +71,80 @@ public class RedstoneBuilder extends JavaPlugin implements Listener {
 		
 		
 		try {
-			File file = new File("TESTFILE.txt");
-			FileWriter fileWr = new FileWriter(file);
-			
-			file.isDirectory();
-			
-			fileWr.write("" + event.getPlayer());
-			fileWr.flush();
-			fileWr.close();
+			FileSystem file = new FileSystem() {
+				
+				@Override
+				public Set<String> supportedFileAttributeViews() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public FileSystemProvider provider() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public WatchService newWatchService() throws IOException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public boolean isReadOnly() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public boolean isOpen() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public UserPrincipalLookupService getUserPrincipalLookupService() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public String getSeparator() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public Iterable<Path> getRootDirectories() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public PathMatcher getPathMatcher(String syntaxAndPattern) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public Path getPath(String first, String... more) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public Iterable<FileStore> getFileStores() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public void close() throws IOException {
+					// TODO Auto-generated method stub
+					
+				}
+			};
 			
 		} catch (Exception e) {
 			// TODO: handle exception
