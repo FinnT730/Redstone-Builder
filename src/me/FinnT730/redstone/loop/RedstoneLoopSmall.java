@@ -13,19 +13,22 @@ public class RedstoneLoopSmall implements CommandExecutor {
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean onCommand(CommandSender sender, Command command, String raw, String[] arg) {
+	public boolean onCommand(CommandSender sender, Command command, String raw, String[] arg) throws IllegalArgumentException {
 		if(sender instanceof Player) {
 			Player player = (Player)sender;
 			
 			Block emitter = new Block(Material.REDSTONE_TORCH_OFF);
 			
 			ItemStack ArmorStand = new ItemStack(Material.ARMOR_STAND, 1, (short) 0);
-
 			
-			player.getInventory().addItem(ArmorStand);
+			try {
+				player.getInventory().addItem(ArmorStand);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			emitter.isPowered();
 			emitter.setData((byte) 1);
-			emitter.notify();
 		}
 		return true;
 	}
